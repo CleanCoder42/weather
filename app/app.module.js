@@ -9,14 +9,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var myapp_component_1 = require("./components/myapp.component");
+var navbar_component_1 = require("./components/navbar/navbar.component");
+var search_component_1 = require("./components/search/search.component");
+var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule
+            ],
             declarations: [
-                myapp_component_1.MyAppComponent
+                myapp_component_1.MyAppComponent,
+                navbar_component_1.default,
+                search_component_1.default
             ],
             bootstrap: [myapp_component_1.MyAppComponent]
         })
