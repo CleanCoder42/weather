@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
+import {Component} from '@angular/core';
 import "rxjs/add/operator/toPromise";
+import {GetWeatherService} from "../../services/getWeather.service";
 
 @Component({
     selector: 'weather-search',
@@ -10,14 +10,10 @@ import "rxjs/add/operator/toPromise";
 export default class SearchComponent {
     public searchString: string;
 
-    constructor(private http: Http) {}
+    constructor(private getWeatherService: GetWeatherService) {}
 
     onSubmit() {
-        this.http.get(`/api/weatherSearch/${this.searchString}`).toPromise()
-            .then(response => {
-                const data = response.json();
-                console.log('received this from server ', data);
-            });
+        this.getWeatherService.makeApiCall(this.searchString);
     }
 
 }

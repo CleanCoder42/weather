@@ -1,11 +1,11 @@
-var express = require('express');
-var path = require('path');
-var open = require('open');
-var https = require('https');
+const express = require('express');
+const path = require('path');
+const open = require('open');
+const https = require('https');
 
-var PORT = 5001;
+const PORT = 5001;
 
-var app = express();
+const app = express();
 
 app.use('/', express.static(__dirname));
 app.use('/static', express.static(path.join(__dirname, '/public/**/*')));

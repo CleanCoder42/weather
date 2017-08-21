@@ -13,7 +13,8 @@ var MyAppComponent = (function () {
     MyAppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: 'app/components/myapp.component.html'
+            templateUrl: 'app/components/myapp.component.html',
+            encapsulation: core_1.ViewEncapsulation.None
         })
     ], MyAppComponent);
     return MyAppComponent;

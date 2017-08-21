@@ -13,6 +13,9 @@ var navbar_component_1 = require("./components/navbar/navbar.component");
 var search_component_1 = require("./components/search/search.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var currentWeather_component_1 = require("./components/currentWeather/currentWeather.component");
+var app_routes_1 = require("./app.routes");
+var getWeather_service_1 = require("./services/getWeather.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,12 +24,17 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                http_1.HttpModule
+                http_1.HttpModule,
+                app_routes_1.routing
             ],
             declarations: [
                 myapp_component_1.MyAppComponent,
                 navbar_component_1.default,
-                search_component_1.default
+                search_component_1.default,
+                currentWeather_component_1.default
+            ],
+            providers: [
+                getWeather_service_1.GetWeatherService
             ],
             bootstrap: [myapp_component_1.MyAppComponent]
         })
