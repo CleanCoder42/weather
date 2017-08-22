@@ -16,6 +16,8 @@ var http_1 = require("@angular/http");
 var currentWeather_component_1 = require("./components/currentWeather/currentWeather.component");
 var app_routes_1 = require("./app.routes");
 var getWeather_service_1 = require("./services/getWeather.service");
+var forecast_component_1 = require("./components/forecast/forecast.component");
+var app_store_1 = require("./app.store");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,10 +33,12 @@ var AppModule = (function () {
                 myapp_component_1.MyAppComponent,
                 navbar_component_1.default,
                 search_component_1.default,
-                currentWeather_component_1.default
+                currentWeather_component_1.default,
+                forecast_component_1.default
             ],
             providers: [
-                getWeather_service_1.GetWeatherService
+                getWeather_service_1.GetWeatherService,
+                app_store_1.AppStore
             ],
             bootstrap: [myapp_component_1.MyAppComponent]
         })

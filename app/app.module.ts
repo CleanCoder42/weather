@@ -8,6 +8,8 @@ import {HttpModule} from "@angular/http";
 import CurrentWeatherComponent from "./components/currentWeather/currentWeather.component";
 import {routing} from "./app.routes";
 import {GetWeatherService} from "./services/getWeather.service";
+import ForecastComponent from "./components/forecast/forecast.component";
+import {AppStore} from "./app.store";
 
 @NgModule({
     imports: [
@@ -20,10 +22,12 @@ import {GetWeatherService} from "./services/getWeather.service";
         MyAppComponent,
         NavbarComponent,
         SearchComponent,
-        CurrentWeatherComponent
+        CurrentWeatherComponent,
+        ForecastComponent
     ],
     providers: [
-        GetWeatherService
+        GetWeatherService,
+        AppStore
     ],
     bootstrap: [MyAppComponent]
 })

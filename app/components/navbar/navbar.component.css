@@ -1,0 +1,11 @@
+.navbar {
+    background-color: #053312;
+}
+
+.navbar #company {
+    color: yellow;
+    text-shadow: -1px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
+}
+.navbar #headers a {
+    color: whitesmoke;
+}

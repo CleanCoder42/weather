@@ -1,13 +1,17 @@
 
     <div class="row" *ngIf="weatherExists()" id="weatherRow">
         <div class="col-md-6">
-            <h2>
-                {{ currentWeather.name }}
-                <span><img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" title="{{currentWeather.weather[0].description}}"> </span>
-            </h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        {{ currentWeather.name }}
+                        <span><img src="http://openweathermap.org/img/w/{{currentWeather.weather[0].icon}}.png" title="{{currentWeather.weather[0].description}}"> </span>
+                    </h2>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-6">
-                    {{ currentWeather.main.temp }}<span>&#8457;</span> / feels like {{ getHeatIndex() }}<span>&#8457;</span>
+                    {{ currentWeather.main.temp.toFixed(1) }}<span> &#8457; </span> | Humidity: {{ currentWeather.main.humidity}}%
                 </div>
                 <div class="col-sm-4">
                     Wind: {{ currentWeather.wind.speed }} mph {{ getWindDirection() }}
@@ -15,16 +19,30 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    High/Low: {{currentWeather.main.temp_max}}/{{currentWeather.main.temp_min}}
+                    feels like {{ getHeatIndex() }}<span> &#8457; </span>
                 </div>
                 <div class="col-sm-4">
-                    Humidity: {{ currentWeather.main.humidity}}%
+                    cloud cover: {{ currentWeather.clouds.all}}%
                 </div>
             </div>
         </div>
+        
         <div class="col-md-6">
-            <h3>Current Conditions</h3>
-            <h4>{{ getWeatherDescription() }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Current Conditions</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    as of {{ getTimeStamp().toLocaleString() | date: 'shortTime' }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ getWeatherDescription() }}
+                </div>
+            </div>
         </div>
     </div>
     

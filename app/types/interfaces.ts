@@ -37,7 +37,29 @@ interface openWeatherClouds {
     all: number;
 }
 
-interface openWeatherApi {
+interface openWeatherCity {
+    id: number;
+    name: string;
+}
+
+interface openWeatherForecastTemps {
+    day: number;
+    min: number;
+    max: number;
+    night: number;
+    eve: number;
+    morn: number;
+}
+
+interface openWeatherForecast {
+    dt: number;
+    temp: openWeatherForecastTemps;
+    pressure: number;
+    humidity: number;
+    weather: Array<openWeatherWeather>;
+}
+
+interface currentWeatherApi {
     coord: openWeatherCoord;
     sys: openWeatherSys;
     weather: Array<openWeatherWeather>;
@@ -50,5 +72,22 @@ interface openWeatherApi {
     name: string;
     cod: number;
 }
+
+interface dailyForecastApi {
+    cod: string;
+    message: string;
+    city: openWeatherCity;
+    coord: openWeatherCoord;
+    country: string;
+    cnt: number;
+    list: Array<openWeatherForecast>;
+}
+
+interface openWeatherApi {
+    currentWeather: currentWeatherApi;
+    dailyForecast: dailyForecastApi;
+}
+
+
 
 

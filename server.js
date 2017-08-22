@@ -16,7 +16,6 @@ app.use(express.static(path.join(__dirname, 'node_modules/systemjs/**/*')));
 app.get('/api/weatherSearch/:searchString', function (req, res) {
     const apiKey = "f8aa9a4391a370300c3233ac126ece78";
     let searchString = req.params.searchString;
-    console.log('search string is ', searchString);
     let data = {};
 
     if (/^\d+$/.test(searchString)) {
@@ -27,19 +26,19 @@ app.get('/api/weatherSearch/:searchString', function (req, res) {
         searchString = searchString.toLowerCase();
         searchString = searchString.replace("st. ", "saint ");
         searchString = searchString.replace(" ", "%20");
-        https.get({
-            host: 'api.openweathermap.org',
-            path: `/data/2.5/weather?q=${searchString}&units=imperial&APPID=${apiKey}`
-        }, function (response) {
-            let body = "";
-            response.on("data", function (d) {
-                body += d;
+        
+        const currentWeather = makeApiCall(`/data/2.5/weather?q=${searchString}&units=imperial&APPID=${apiKey}`);
+        const dailyForecast = makeApiCall(`/data/2.5/forecast/daily?q=${searchString}&units=imperial&APPID=${apiKey}`);
+        
+        Promise.all([currentWeather, dailyForecast])
+            .then(values => {
+                data.currentWeather = values[0];
+                data.dailyForecast = values[1];
+                res.status(200).send(data);
+            })
+            .catch(error => {
+                res.status(403).send(error);
             });
-            response.on("end", function () {
-                const parsed = JSON.parse(body);
-                res.status(200).send(parsed);
-            });
-        });
     }
 });
 
@@ -52,3 +51,23 @@ app.listen(PORT, function (err) {
         open('http://localhost:' + PORT, 'firefox');
     }
 });
+
+makeApiCall = function (url) {
+    return new Promise(function (resolve, reject) {
+        https.get({
+            host: 'api.openweathermap.org',
+            path: url
+        }, function (response) {
+            let body = "";
+            response.on("data", function (d) {
+                body += d;
+            });
+            response.on("end", function () {
+                resolve(JSON.parse(body));
+            });
+            response.on("error", function (err) {
+                reject(err);
+            });
+        });
+    });
+};
