@@ -24,4 +24,5 @@ export default class ForecastComponent {
     getTimeStamp(unixUtxTime: number) {
         return new Date(unixUtxTime*1000);
     }
+    
 }
