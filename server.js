@@ -28,7 +28,7 @@ app.get('/api/weatherSearch/:searchString', function (req, res) {
         searchString = searchString.replace(" ", "%20");
         
         const currentWeather = makeApiCall(`/data/2.5/weather?q=${searchString}&units=imperial&APPID=${apiKey}`);
-        const dailyForecast = makeApiCall(`/data/2.5/forecast/daily?q=${searchString}&units=imperial&APPID=${apiKey}`);
+        const dailyForecast = makeApiCall(`/data/2.5/forecast/daily?q=${searchString}&units=imperial&cnt=5&APPID=${apiKey}`);
         
         Promise.all([currentWeather, dailyForecast])
             .then(values => {

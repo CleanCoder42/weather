@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {GetWeatherService} from "../../services/getWeather.service";
+import {Component} from '@angular/core';
 import {AppStore} from "../../app.store";
 
 @Component({
@@ -9,13 +8,13 @@ import {AppStore} from "../../app.store";
 })
 
 export default class CurrentWeatherComponent {
-    currentWeather: currentWeatherApi = undefined;
+    currentWeather: currentWeatherApi;
     
     constructor(private appStore: AppStore) {
         this.currentWeather = appStore.getState().currentWeather;
         this.appStore.changes.subscribe((value) => {
             this.currentWeather = value.currentWeather;
-        })
+        });
     }
     
     weatherExists() {

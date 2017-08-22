@@ -1,6 +1,19 @@
-<div>
-   City name 
+<div *ngIf="forecastExists()" class="top-level-forecast">
+    <div class="row forecast-top-row">
+        <h2>5 Day Forecast</h2>
+        <h4>{{ dailyForecast.city.name }}</h4>
+    </div>
+    <div class="row forecast-bottom-row">
+        <div class="col-md-2 weather-box" *ngFor="let day of dailyForecast.list">
+            <div class="row"><strong>{{ getTimeStamp(day.dt).toLocaleString() | date: 'EEE MM/dd' }}</strong></div>
+            <div class="row ">
+                <img class="weather-img" src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png" title="{{day.weather[0].description}}">
+            </div>
+            <div class="row"><strong>{{ day.temp.max.toFixed(1)}}/{{ day.temp.min.toFixed(1)}}</strong></div>
+        </div>
+    </div>
 </div>
-<div>
-    Dailyl high lows with condition icon and some other stuff
+
+<div class="row" *ngIf="!forecastExists()">
+    Please search for a city to display forecast
 </div>

@@ -1,0 +1,33 @@
+.top-level-forecast {
+    background-color: #006666;
+    border-radius: 25px;
+    border: 5px solid #339966;
+    color: #ffffe6;
+}
+
+.forecast-top-row {
+    margin: auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.forecast-top-row h4 {
+    margin: auto;
+    text-align: center;
+}
+
+.forecast-bottom-row {
+    margin: auto;
+    max-width: 700px;
+    text-align: center;
+}
+
+.weather-box {
+    padding: 5px;
+    margin: 5px;
+    border: 3px solid #00173d;
+    border-radius: 30px;
+    text-align: center;
+    background-color: #c6dcff;
+    color: #00875c
+}
