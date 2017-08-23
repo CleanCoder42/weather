@@ -18,6 +18,8 @@ var app_routes_1 = require("./app.routes");
 var getWeather_service_1 = require("./services/getWeather.service");
 var forecast_component_1 = require("./components/forecast/forecast.component");
 var app_store_1 = require("./app.store");
+var hourlyForecast_component_1 = require("./components/hourlyForecast/hourlyForecast.component");
+var weatherUtility_service_1 = require("./services/weatherUtility.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,10 +36,12 @@ var AppModule = (function () {
                 navbar_component_1.default,
                 search_component_1.default,
                 currentWeather_component_1.default,
-                forecast_component_1.default
+                forecast_component_1.default,
+                hourlyForecast_component_1.default
             ],
             providers: [
                 getWeather_service_1.GetWeatherService,
+                weatherUtility_service_1.WeatherUtilityService,
                 app_store_1.AppStore
             ],
             bootstrap: [myapp_component_1.MyAppComponent]

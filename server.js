@@ -29,11 +29,13 @@ app.get('/api/weatherSearch/:searchString', function (req, res) {
         
         const currentWeather = makeApiCall(`/data/2.5/weather?q=${searchString}&units=imperial&APPID=${apiKey}`);
         const dailyForecast = makeApiCall(`/data/2.5/forecast/daily?q=${searchString}&units=imperial&cnt=5&APPID=${apiKey}`);
+        const hourlyForecast = makeApiCall(`/data/2.5/forecast?q=${searchString}&units=imperial&cnt=8&APPID=${apiKey}`);
         
-        Promise.all([currentWeather, dailyForecast])
+        Promise.all([currentWeather, dailyForecast, hourlyForecast])
             .then(values => {
                 data.currentWeather = values[0];
                 data.dailyForecast = values[1];
+                data.hourlyForecast = values[2];
                 res.status(200).send(data);
             })
             .catch(error => {

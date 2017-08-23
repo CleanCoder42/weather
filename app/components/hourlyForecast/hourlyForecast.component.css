@@ -1,0 +1,31 @@
+.top-level-hourly {
+    color: #ffffe6;
+}
+
+.hourly-top-row {
+    margin: auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.hourly-bottom-row {
+    margin: auto;
+    max-width: 850px;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid #ffffe6;
+    background-color: #c6dcff;
+    color: #00875c
+}
+
+table {
+    margin: 2px;
+    padding: 5px;
+    table-layout: fixed;
+}
+
+td, th {
+    padding: 6px;
+    text-align: center;
+    border-right: 2px solid #ffffe6;
+}

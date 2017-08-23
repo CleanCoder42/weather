@@ -10,6 +10,8 @@ import {routing} from "./app.routes";
 import {GetWeatherService} from "./services/getWeather.service";
 import ForecastComponent from "./components/forecast/forecast.component";
 import {AppStore} from "./app.store";
+import HourlyForecastComponent from "./components/hourlyForecast/hourlyForecast.component";
+import {WeatherUtilityService} from "./services/weatherUtility.service";
 
 @NgModule({
     imports: [
@@ -23,10 +25,12 @@ import {AppStore} from "./app.store";
         NavbarComponent,
         SearchComponent,
         CurrentWeatherComponent,
-        ForecastComponent
+        ForecastComponent,
+        HourlyForecastComponent
     ],
     providers: [
         GetWeatherService,
+        WeatherUtilityService,
         AppStore
     ],
     bootstrap: [MyAppComponent]

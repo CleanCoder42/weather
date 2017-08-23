@@ -3,7 +3,8 @@ import {Observable} from "rxjs/Observable";
 
 const state = {
     currentWeather: {},
-    dailyForecast: {}
+    dailyForecast: {},
+    hourlyForecast: {}
 };
 
 const store = new BehaviorSubject<openWeatherApi>(state as openWeatherApi);

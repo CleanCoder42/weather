@@ -1,0 +1,34 @@
+<div *ngIf="forecastExists()" class="top-level-hourly">
+    <div class="row hourly-top-row">
+        <h2>Hourly Forecast</h2>
+        <h4>{{ hourlyForecast.city.name}}</h4>
+    </div>
+    <div class="row hourly-bottom-row">
+        <table>
+            <tr>
+                <th>{{ getTimeStamp(hourlyForecast.list[0].dt) | date: 'EEEE' }}</th>
+                <th *ngFor="let day of hourlyForecast.list">{{ getTimeStamp(day.dt).toLocaleString() | date: 'shortTime' }}</th>
+            </tr>
+            <tr>
+                <td>Forecast</td>
+                <td *ngFor="let day of hourlyForecast.list"><img src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png" title="{{day.weather[0].description}}"> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td *ngFor="let day of hourlyForecast.list">{{day.weather[0].description}}</td>
+            </tr>
+            <tr>
+                <td>Temp</td>
+                <td *ngFor="let day of hourlyForecast.list">{{ day.main.temp.toFixed(1)}}<span> &#8457; </span> </td>
+            </tr>
+            <tr>
+                <td>Wind</td>
+                <td *ngFor="let day of hourlyForecast.list">{{ day.wind.speed.toFixed(1) }} <span>{{ getWindDirection(day.wind.deg)}}</span></td>
+            </tr>
+        </table>
+    </div>
+</div> 
+
+<div *ngIf="!forecastExists()">
+    Please search for city to display forecast
+</div>

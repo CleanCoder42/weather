@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 var state = {
     currentWeather: {},
-    dailyForecast: {}
+    dailyForecast: {},
+    hourlyForecast: {}
 };
 var store = new BehaviorSubject_1.BehaviorSubject(state);
 var AppStore = (function () {

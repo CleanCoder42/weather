@@ -22,6 +22,9 @@ interface openWeatherMain {
     pressure: number;
     temp_min: number;
     temp_max: number;
+    sea_level: number;
+    grnd_level: number;
+    temp_kf: number;
 }
 
 interface openWeatherWind {
@@ -59,6 +62,16 @@ interface openWeatherForecast {
     weather: Array<openWeatherWeather>;
 }
 
+interface openWeatherHourlyForecast {
+    dt: number;
+    main: openWeatherMain;
+    weather: openWeatherWeather;
+    clouds: openWeatherClouds;
+    wind: openWeatherWind;
+    sys: openWeatherSys;
+    dt_txt: string;
+}
+
 interface currentWeatherApi {
     coord: openWeatherCoord;
     sys: openWeatherSys;
@@ -83,9 +96,20 @@ interface dailyForecastApi {
     list: Array<openWeatherForecast>;
 }
 
+interface hourlyForecastApi {
+    city: openWeatherCity;
+    coord: openWeatherCoord;
+    country: string;
+    cod: string;
+    message: string;
+    cnt: number;
+    list: Array<openWeatherHourlyForecast>;
+}
+
 interface openWeatherApi {
     currentWeather: currentWeatherApi;
     dailyForecast: dailyForecastApi;
+    hourlyForecast: hourlyForecastApi;
 }
 
 
